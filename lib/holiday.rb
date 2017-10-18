@@ -73,8 +73,14 @@ end
 def all_holidays_with_bbq(holiday_hash)
   # return an array of holiday names (as symbols) where supply lists
   # include the string "BBQ"
-  holiday_array = []
+  arr = []
 
-  holiday_hash.each{|key, value| holiday_array.push(value)}
-
+  holiday_hash.each do |season_key, season_value|
+    holiday_hash[season_key].each do |holiday_key, holiday_value|
+      if holiday_value.include?("BBQ") == true
+        arr.push(holiday_key)
+      end
+    end
+  end
+  arr
 end
